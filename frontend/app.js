@@ -56,14 +56,14 @@ const api = {
   },
 
   async register(username, password) {
-    return this._fetch('/auth/register', {
+    return this._fetch('/register', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
     });
   },
 
   async login(username, password) {
-    const data = await this._fetch('/auth/login', {
+    const data = await this._fetch('/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
     });
@@ -439,14 +439,14 @@ async function loadLeaderboard() {
     }
 
     // Sort by score descending
-    entries.sort((a, b) => (b.score || 0) - (a.score || 0));
+    entries.sort((a, b) => (b.high_score || 0) - (a.high_score || 0));
 
     const top10 = entries.slice(0, 10);
     leaderboardList.innerHTML = top10
       .map((entry, idx) => {
         const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : '';
         const rank = medal || `<span class="rank">#${idx + 1}</span>`;
-        return `<li>${rank}<span class="username">${escapeHtml(entry.username || 'Anonymous')}</span><span class="score">${entry.score}</span></li>`;
+        return `<li>${rank}<span class="username">${escapeHtml(entry.username || 'Anonymous')}</span><span class="score">${entry.high_score}</span></li>`;
       })
       .join('');
 
