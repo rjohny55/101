@@ -1,4 +1,5 @@
 # Agent Orchestrator
+.ao/
 node_modules/
 *.log
 .env
