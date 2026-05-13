@@ -228,7 +228,15 @@ def leaderboard():
     return jsonify(leaderboard_list), 200
 
 
+def _is_debug_mode():
+    """Determine if Flask debug mode should be enabled based on FLASK_DEBUG env var.
+
+    Returns True only if FLASK_DEBUG is set to '1', 'true', or 'yes' (case-insensitive).
+    Defaults to False for production safety.
+    """
+    return os.getenv('FLASK_DEBUG', '').lower() in ('1', 'true', 'yes')
+
+
 if __name__ == '__main__':
     create_tables()
-    debug_mode = os.getenv('FLASK_DEBUG', '').lower() in ('1', 'true', 'yes')
-    app.run(debug=debug_mode)
+    app.run(debug=_is_debug_mode())
