@@ -2,3 +2,9 @@
 node_modules/
 *.log
 .env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+backend/snake.db
