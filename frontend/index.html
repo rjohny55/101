@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Auth Screen -->
+    <div id="auth-screen" class="screen active">
+      <div class="card">
+        <h1>Snake Game</h1>
+        <h2 id="auth-title">Login</h2>
+        <form id="auth-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" required autocomplete="current-password">
+          </div>
+          <div id="auth-error" class="error-message hidden"></div>
+          <button type="submit" id="auth-submit" class="btn btn-primary">Login</button>
+        </form>
+        <p class="switch-text">
+          <button id="auth-toggle" class="btn-link">Don't have an account? Register</button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+      <div class="game-container">
+        <div class="game-header">
+          <div class="score-display">Score: <span id="score">0</span></div>
+          <div class="game-controls">
+            <button id="new-game-btn" class="btn btn-primary">New Game</button>
+            <button id="leaderboard-btn" class="btn btn-secondary">Leaderboard</button>
+            <button id="logout-btn" class="btn btn-danger">Logout</button>
+          </div>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="game-canvas" width="500" height="500"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameover-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Game Over!</h2>
+        <p>Your score: <span id="final-score">0</span></p>
+        <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+        <button id="gameover-leaderboard-btn" class="btn btn-secondary">Leaderboard</button>
+      </div>
+    </div>
+
+    <!-- Leaderboard Screen -->
+    <div id="leaderboard-screen" class="screen hidden">
+      <div class="card">
+        <h1>Leaderboard</h1>
+        <div id="leaderboard-loading" class="loading">Loading...</div>
+        <ol id="leaderboard-list" class="leaderboard-list hidden"></ol>
+        <p id="leaderboard-empty" class="empty-message hidden">No scores yet. Be the first!</p>
+        <button id="back-to-game-btn" class="btn btn-primary">Back to Game</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

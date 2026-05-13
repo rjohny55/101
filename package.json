@@ -1,0 +1,7 @@
+{
+  "name": "snake-game-backend",
+  "private": true,
+  "scripts": {
+    "test": "cd backend && python3 -m pytest -v"
+  }
+}
